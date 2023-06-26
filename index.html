@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>WebDesign</title>
+  <link rel="icon" href="favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="favicon.png">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/index.css">
+  <!-- reset.css・・・ブラウザの書式をリセットするために読み込む。tetleの下に書く -->
+  <!-- linkタグはcssフォルダを読み込むタグ -->
+</head>
+<body id="top">
+  <div class="container">
+    <!-- divはグループを作るタグ、html上の意味はない。背景を付ける際など、まとめて書式を設定したいときに使う。 -->
+    <!-- classを使って、divに名前を付けることができる。上記ではcontainerが名前 -->
+    <header>
+      <!-- サイト名は大見出し「h1」を設定する -->
+      <!-- 「ctrl＋/」はコメントのショートカット。そのタグは表示されない -->
+      <h1><a href="index.html">WebDesign</a></h1>
+      <!-- メニューはリストli -->
+      <!-- ulとliは必ずセットで使う -->
+    </header>
+
+    <nav>
+      <ul>
+        <!-- リンクタグ「a」を使うときは、alt＋ｗで行う -->
+        <li><a href="index.html" class="active">HOME</a></li>
+        <li> <a href="next.html">下層ページの構成</a></li>
+        <li> <a href="contact.html">お問い合わせ</a></li>
+      </ul>
+    </nav>
+    <!-- 「home」だけ太字に指定したいので、「active」というタグ名をつけてある。 -->
+
+
+    <!-- ［メインビジュアル］ -->
+    <!-- imgタグを記入する際は、<は入力しないでそのままiから入力する -->
+    <!-- ””の間にカーソルを合わせてctrl＋スペースを実行すると、プルダウンが表示されて画像ファイルを選ぶことができる。 -->
+
+    <p class="visual"><img src="img/web.jpg" alt="webページ制作言語"></p>
+    <!-- <ｐ>はたくさん出てくるので、やはり名前を付けておく。上記ではvisual という名前-->
+
+    <main>
+      <section>
+        <h2>TOPページの見出し</h2>
+        <p>TOPページの大見出し（h1）はサイト名に設定するので、mainタグ内は中見出し（h2）から使い始める。</p>
+      </section>
+      <!-- 文字を選択→alt＋ｗ→上に入力する窓が出てくる→ｐ（段落）→自動的に文章の初めと終わりにｐが付けられる -->
+      <!-- shift＋→で文字を選択できる -->
+      <!-- ctrl＋スペースで候補を再表示させられる。確定してしまった後に修正する際便利 -->
+      <section>
+        <h2>セクションとは</h2>
+        <p>見出しとその内容は、sectionタグでグループ化する。小見出しがある場合、中見出し（h2）のsectionの中に小見出し（h3）のsectionが入ることもある。</p>
+      </section>
+      <aside>
+        <p>バナーや注意書き、サイドバーなどの補足情報はasideで囲む。</p>
+      </aside>
+      <!-- asideは範囲なので、中にpやulliやhが入ってくる。例・・・ -->
+      <!-- <aside>
+  <p><a href=""><img src="img/yoyaku.png" alt="予約"></a></p>
+</aside> -->
+
+      <!-- <span>→改行しない -->
+    </main>
+  </div>
+  <footer>
+    <p class="pagetop"><a href="#top"><img src="img/gotop.svg" width="32" alt="ページトップへ"></a></p>
+    <p class="copyright">
+      <small>
+        &copy;2021 WebDesign.
+        <span>All Rights Reserved.</span>
+      </small>
+    </p>
+  </footer>
+</body>
+</html>

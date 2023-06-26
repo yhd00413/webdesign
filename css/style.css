@@ -1,0 +1,117 @@
+/*［bodyの書式］文字色:濃いグレー、文字サイズ:16px、書体:游ゴシック体、背景色:ベージュ */
+body {
+  /* ボディにはテキストのデフォルトの書式を書く */
+  color: #333;
+  font-size: 16px;
+  font-family: "Yu Gothic Medium", YuGothic, sans-serif;
+  background-color: beige;
+}
+/* sans-serifはゴシック体、serifは明朝体 */
+/*［リンク文字の書式］文字色：親と同じ、下線なし → body書式の下へ移動、WebDesignにリンクを設定 */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/*［class="container"の書式］背景色:白、幅:980px、中央配置、内側左右余白:20px */
+.container {
+  background-color: #fff;
+  width: 980px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+/* 「.container」は「div container」意味。 */
+
+/*［WebDesignの書式］
+背景色:青、文字色:白、中央揃え、余白:30px
+→文字サイズ:30px、太字
+→外側下余白:20px */
+header h1 {
+  background-color: blue;
+  color: white;
+  text-align: center;
+  padding: 30px;
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+/*［メニューの書式］上下ボーダー（線幅:2px、線種:直線、線カラー:任意）、外側下余白:20px、中央揃え、内側上下余白:15px */
+nav {
+  border-top-width: 2px;
+  border-top-style: solid;
+  border-top-color: #dc143c;
+  border-bottom: 2px solid #dc143c;
+  margin-bottom: 20px;
+  text-align: center;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+/* text、paddingはliに書いても効かない。navに書く。
+} */
+
+/*［メニュー項目の書式］１行で表示、隣との間:20px */
+nav li {
+  display: inline;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+/* display:inline・・・ボックスをインライン表示に変換する。liだと改行されてしまうため、横一列に表示されるようにした。 */
+/* 片側だけにpadding20としてしまうと、中央揃えにならなくなる。（一番左のhomeの左にもスペースが20ｐｘできてしまうため。）各項目の両端に10ｐｘずつ付けてあげれば、中央揃えになる。 */
+
+/*［メニューのリンク文字のホバー設定］下線表示、不透明度:70% */
+nav li a:hover {
+  text-decoration: underline;
+  opacity: 0.7;
+}
+/* 不透明度は0～1で設定する。 */
+
+/*［HOMEの書式］太字 */
+nav li a.active {
+  font-weight: bold;
+}
+
+/*［メインビジュアルの書式］下余白:20px */
+p.visual {
+  padding-bottom: 20px;
+}
+
+/*［mainの書式］下余白:30px */
+main {
+  padding-bottom: 30px;
+}
+
+/*［main sectionの書式］背景色:任意、内側余白:20px、外側下余白:20px */
+main section {
+  background-color: #cdf8cd;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+/*［main section h2の書式］文字サイズ:20px、太字、下ボーダー（線幅:2px、線種:直線、線カラー:#333）、文字とボーダー間の余白:5px、外側下余白:10px */
+main section h2 {
+  font-size: 20px;
+  font-weight: bold;
+  border-bottom: 2px solid #333;
+  /* background-color: aquamarine; */
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+}
+/* background-color: aquamarine;・・・範囲がわかりずらいので、適当な色を付けて視覚的に範囲がわかるようにしただけ。メモ書きに変換。 */
+
+/*［main section pの書式］行の高さ:文字サイズの1.5倍 */
+main section p {
+  line-height: 1.5;
+}
+
+/*［footerの書式］背景色:黒、文字色:白、中央揃え、高さ:50px */
+footer {
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  /* height: 50px; */
+  padding-top: 17px;
+  padding-bottom: 17px;
+}
+/* webではheightはほとんど使わない。（デバイスの環境で表示が変わってしまうため。） 上記の場合、height: 50px;は記載しない。上下余白だけ設定すればよい。*/

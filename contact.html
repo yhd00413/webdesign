@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>お問い合わせ - WebDesign</title>
+  <link rel="icon" href="favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="favicon.png">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/contact.css">
+  <!-- reset.css・・・ブラウザの書式をリセットするために読み込む。tetleの下に書く -->
+  <!-- linkタグはcssフォルダを読み込むタグ -->
+</head>
+<body id="top">
+  <div class="container">
+    <!-- divはグループを作るタグ、html上の意味はない。背景を付ける際など、まとめて書式を設定したいときに使う。 -->
+    <!-- classを使って、divに名前を付けることができる。上記ではcontainerが名前 -->
+    <header>
+      <!-- サイト名は大見出し「h1」を設定する -->
+      <!-- 「ctrl＋/」はコメントのショートカット。そのタグは表示されない -->
+      <h1><a href="index.html">WebDesign</a></h1>
+      <!-- メニューはリストli -->
+      <!-- ulとliは必ずセットで使う -->
+    </header>
+
+    <!-- </header>をh1だけにする→cssのnavがついているものをすべてheaderをはずす→ｃｓｓの「nav {」にposition: sticky;以下の行を追記 スクロールしても画面の上にメニューが表示されたままになる。-->
+    <nav>
+      <ul>
+        <!-- リンクタグ「a」を使うときは、alt＋ｗで行う -->
+        <li><a href="index.html">HOME</a></li>
+        <li> <a href="next.html">下層ページの構成</a></li>
+        <li> <a href="contact.html" class="active">お問い合わせ</a></li>
+      </ul>
+    </nav>
+    <!-- 「home」だけ太字に指定したいので、「active」というタグ名をつけてある。 -->
+
+
+    <!-- ［メインビジュアル］ -->
+    <!-- imgタグを記入する際は、<は入力しないでそのままiから入力する -->
+    <!-- ””の間にカーソルを合わせてctrl＋スペースを実行すると、プルダウンが表示されて画像ファイルを選ぶことができる。 -->
+
+
+    <!-- <ｐ>はたくさん出てくるので、やはり名前を付けておく。上記ではvisual という名前-->
+
+    <main>
+      <article>
+        <h1>お問い合わせ</h1>
+        <p>WebDesignについてのご質問・ご意見は、下記フォームよりお気軽にお問い合わせください。</p>
+        <!-- 注意書きなのでasideを使う。 -->
+        <aside>
+          <ul>
+            <li>必要事項を記入し、「送信」をクリックしてください。</li>
+            <li>ご登録いただいた個人情報は、お問い合わせ内容の確認以外には使用いたしません。</li>
+            <li>※は必須項目です。</li>
+          </ul>
+        </aside>
+        <!-- formだけで入力すると、postが自動的に表示されるので、「＜」は付けないで入力した方がよい。
+        「placeholder="ウェブデザ　花子"」は、入力例を表示させる属性
+      「required」は、入力必須項目という属性
+    radioはname属性を付けないと、二者択一にならない。
+  <label>は、ボタンだけでなく、文字をクリック（タップ）した場合でも選択できるようにするために付ける。
+    checkedはデフォルトでチェックがされた状態で表示させるために付ける。
+    dtとddをフレックスボックスで横並びにしたいので、divで囲む。
+    -->
+        <form action="#" method="post">
+          <dl>
+            <div>
+              <dt>お名前<span>※</span></dt>
+              <dd><input type="text" placeholder="ウェブデザ　花子" required></dd>
+            </div>
+            <div>
+              <dt>メールアドレス<span>※</span></dt>
+              <dd><input type="email" placeholder="info@gmail.com" required></dd>
+            </div>
+            <div>
+              <dt>お問い合わせの種類</dt>
+              <dd>
+                <label>
+                  <input type="radio" name="category" checked>
+                  ご質問
+                </label>
+                <label>
+                  <input type="radio" name="category">
+                  お問い合わせ
+                </label>
+              </dd>
+            </div>
+            <div>
+              <dt>内容</dt>
+              <dd><textarea></textarea></dd>
+            </div>
+          </dl>
+          <p><button>送信</button></p>
+        </form>
+      </article>
+    </main>
+  </div>
+
+  <!-- 今回は、ｈｔｍｌでアイコンの大きさを指定している。
+下記「width="32"」
+上の方「body」にid＝topを設定し、下記herfに#topを書くと、クリックでページトップに移るようになる。-->
+  <footer>
+    <p class="pagetop"><a href="#top"><img src="img/gotop.svg" width="32" alt="ページトップへ"></a></p>
+    <p class="copyright">
+      <small>
+        &copy;2021 WebDesign.
+        <span>All Rights Reserved.</span>
+      </small>
+    </p>
+  </footer>
+</body>
+</html>

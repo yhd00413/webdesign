@@ -1,0 +1,420 @@
+@import url(common.css);
+
+/*［セクションの書式］下余白:30px */
+main article section {
+  padding-bottom: 30px;
+}
+
+/*［中見出しの書式］文字色:任意、文字サイズ:18px、背景画像:bg_h2_top.png(bg_h2_bottom.png)、繰り返しなし、背景画像位置:左下(左下)、内側上下余白: 20px、内側左余白:50px、外側下余白:20px
+２重線の画像の高さがよくわからないので、適当に200ｐｘの高さを設定（後で消す）
+背景画像は高さに対して画像が足らないと、繰り返し表示されてしまう。
+sectionの範囲がよくわからないので、適当にbackground-colorを設定（後で消す）
+画像を追加する場合は、最初のところに「,」で続けて書く。
+画像のポジションは左上がデフォルトになっている。今回は２個画像を読み込んだので、ポジションをそれぞれ設定しないと、２つとも重なって左上に表示されてしまう。一つ目はleft topで、２つめはleft bottomで設定する。
+*/
+main article section h2 {
+  color: #d37333;
+  font-size: 18px;
+  background-image: url(../img/bg_h2_top.png), url(../img/bg_h2_bottom.png);
+  /* height: 200px; */
+  background-repeat: no-repeat;
+  background-position: left top, left bottom;
+  /* background-color: #d0d30d; */
+  padding-top: 20px;
+  padding-left: 50px;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+
+/*［"HOMEに戻る"ボタンの書式］背景色:任意、文字色:白、内側上下余白:15px、内側左右余白:25px、ブロック表示、幅:フィット、外側余白:0 auto、背景画像:arrow.png、繰り返しなし、背景画像サイズ:6px、背景画像位置:右から11px 中央
+aタグに付けないとうまくいかない。
+paddingは上から時計回りに数値を書く方法もある。また、上と右を書くと、逆（下と左）の値を同じ通知で補完する。
+inlineであるaタグには書式が付けられない。今回はdisplay: block;
+  width: fit-content; margin: 0 auto;で作ってある。（display: inline-blockを使う方法もある。）（*/
+main p.homelink {
+  text-align: center;
+}
+main p.homelink a {
+  background-color: blue;
+  color: #fff;
+  padding: 15px 25px;
+  /* display: inline-block; */
+  display: block;
+  width: fit-content;
+  margin: 0 auto;
+  background-image: url(../img/arrow.png);
+  background-repeat: no-repeat;
+  background-size: 6px;
+  background-position: right 11px center;
+}
+
+/*［"HOMEに戻る"ボタンのホバー設定］不透明度:0.7
+70%ではサファリブラウザでは対応していない。0.7と書く。 */
+main p.homelink a:hover {
+  opacity: 0.7;
+}
+
+/*--------------------
+FlexBoxの設定
+--------------------*/
+/* FlexBox、横方向:均等配置
+nexthtmlと見比べてdisplay:flexを付けるところを見つける。
+親に付けないと効かない。親がない場合は「div」で親を作る。 */
+section.flex > div {
+  padding-bottom: 20px;
+  line-height: 1.5;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* 幅:250px
+flex-basisを設定しているものは、モバイルに適応させるために幅を％表示にする。
+250÷940×100＝おおよそ26.6％*/
+section.flex p.left {
+  background-color: bisque;
+  padding: 10px;
+  flex-basis: 26.6%;
+}
+
+/* 幅:650px モバイルに適応させるために幅を％表示にする。*/
+section.flex .right {
+  background-color: aliceblue;
+  padding: 10px;
+  flex-basis: 69.1%;
+}
+
+/* フロート、文字との余白:15px
+flortを使う場合、htmlで対象となるタグ（今回はimg）が一番最初にいないといけない。 */
+section.flex .right img {
+  float: right;
+  padding-left: 15px;
+  padding-bottom: 15px;
+}
+
+/* フロートの解除 */
+section.flex .right p:last-child {
+  clear: both;
+}
+
+/* FlexBox、折り返す、横方向:均等配置、行間隔:20px
+折り返す設定は親に設定（今回はul)*/
+section.list ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  row-gap: 20px;
+}
+
+/* 幅サイズ:460px
+モバイルに適応させるために、幅を％表示に変える。
+（もしも、横並びの隙間を設定しているならば、隙間も％表示に変える必要がある。）
+幅はアイテムに設定する*/
+section.list li {
+  border: 1px solid #333;
+  padding: 10px;
+  line-height: 1.5;
+  flex-basis: 48.9%;
+}
+
+/*--------------------
+罫線メニュー
+--------------------*/
+/* FlexBox */
+section.menu ul {
+  display: flex;
+}
+
+/* 幅比率:1 */
+section.menu li {
+  flex: 1;
+}
+
+/* 文字色:任意、太字、ボーダー（線幅:2px、直線、カラー:文字色と同じ）、ブロック表示、中央揃え、行の高さ:36px
+aタグに付けないとうまくいかない。「display block」を使い、行として扱えるようにする。
+heightでは文字が上になってしまうので、line-heightを使う。line-heightはボーダーの太さを考えて高さ36ｐｘ*/
+section.menu li a {
+  color: red;
+  font-weight: bold;
+  border-top: 2px solid red;
+  border-bottom: 2px solid red;
+  border-right: 2px solid red;
+  display: block;
+  text-align: center;
+  line-height: 36px;
+}
+
+/* 「home」の左線を引く
+***childを使えば、cssを書き換える必要がない。
+線付きのメニューはパターンで覚えてしまう。 */
+section.menu li:first-child a {
+  border-left: 2px solid red;
+}
+
+/* 文字色:白、背景色:線カラーと同じ */
+section.menu li a:hover {
+  color: #fff;
+  background-color: #fd8080;
+}
+
+/*--------------------
+絶対配置 absolute
+--------------------*/
+/* 絶対配置の基準（相対配置） */
+section.flex {
+  position: relative;
+}
+
+/* 絶対配置、上:5px、右:0
+position:absoluteは多様しない。モバイルでうまくいかなくなる。*/
+section.flex p.homelink {
+  position: absolute;
+  top: 5px;
+  right: 0;
+}
+
+/* レスポンシブ  モバイル環境への対応
+モバイル環境で「グリットレイアウト」の表示位置の指定をやめる。*/
+@media (max-width: 767px) {
+  section.flex p.homelink {
+    position: unset;
+  }
+}
+
+/* スマホ縦環境への対応
+flexboxの解除をすれば、オプションで設定したものはすべて無効になる。「display:flex」を「display：block」にすればok。あとは、変えたい部分の書式を書いていく。 */
+@media (max-width: 575px) {
+  section.flex > div {
+    display: block;
+  }
+
+  section.flex p.left {
+    margin-bottom: 20px;
+  }
+
+  section.list ul {
+    display: block;
+  }
+
+  section.list li {
+    margin-bottom: 20px;
+  }
+
+  /* 画面下の方に表示されている四角囲みのメニューもフレックス表示をやめる */
+  section.menu ul {
+    display: block;
+  }
+
+  /* PC環境では「コ」の形に囲んでいたが、モバイルでは縦並びになるため、「U」字型に囲むようにボーダーの設定を変える。右のボーダーは前出の設定を活かす。左に線を引き、上は消す。 */
+  section.menu li a {
+    border-left: 2px solid red;
+    border-top: unset;
+  }
+
+  /* first-childだけ天井の線をひいてやる。 */
+  section.menu li:first-child a {
+    border-top: 2px solid red;
+  }
+}
+
+/* 見出しグループ */
+hgroup {
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+hgroup h3 {
+  font-size: 20px;
+}
+hgroup p {
+  font-size: 13px;
+  color: #999;
+}
+
+/* h3見出しの下にボーダーを引く ::afterとcontentは必須*/
+hgroup h3::after {
+  content: "";
+  display: block;
+  background-color: #333;
+  width: 47px;
+  height: 2px;
+  margin: 3px auto 5px;
+}
+
+/* テーブル */
+table {
+  border: 1px solid #000;
+  width: 50%;
+  border-collapse: separate;
+  border-spacing: 2px;
+}
+
+th,
+td {
+  border: 1px solid #000;
+  height: 30px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+caption {
+  caption-side: bottom;
+}
+
+/*--------------------
+transition
+--------------------*/
+section.transition p {
+  margin-bottom: 20px;
+  text-align: center;
+}
+/* シンプルなtransition */
+p.simple a:hover {
+  opacity: 0.5;
+}
+p.simple a {
+  transition: 3s;
+}
+/* transitionのオプション */
+p.option {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 60px;
+  background-color: var(--back-color);
+  transition-property: width;
+  transition-duration: 0.5s;
+  transition-timing-function: ease-in;
+  transition-delay: 0.5s;
+}
+
+/* ホバーにトランジションをかけると、マウスを上に乗せたときだけ変化がある。マウスを外すときは、色がパッと変わる。  */
+p.option:hover {
+  width: 50%;
+  border-radius: 50%;
+  background-color: var(--hober-color);
+  transition: 1s;
+}
+
+/*--------------------
+タブ切り替え
+--------------------*/
+section.tab ul {
+  display: flex;
+  text-align: center;
+  gap: 10px;
+  color: #fff;
+  position: relative;
+  padding-bottom: 100px;
+}
+section.tab li {
+  flex: 1;
+}
+section.tab label {
+  display: block;
+  line-height: 60px;
+  cursor: pointer;
+}
+
+section.tab label[for="tab1"] {
+  background-color: #000;
+}
+
+section.tab label[for="tab2"] {
+  background-color: #ff0707;
+}
+
+section.tab label[for="tab3"] {
+  background-color: #031cff;
+}
+
+section.tab div {
+  line-height: 100px;
+  position: absolute;
+  top: 60px;
+  left: 0;
+  width: 100%;
+  /* display: none; */
+  opacity: 0;
+  transition: 0.5s;
+  height: 0;
+}
+
+section.tab input#tab1 + div {
+  background-color: #000;
+}
+section.tab input#tab2 + div {
+  background-color: #ff0707;
+}
+section.tab input#tab3 + div {
+  background-color: #031cff;
+}
+
+/* ラジオボタンでタブ切り替え */
+section.tab input:checked + div {
+  /* display: block; */
+  opacity: 1;
+  height: 100px;
+}
+
+/*--------------------
+@keyframes
+--------------------*/
+section.keyframes p {
+  margin-bottom: 20px;
+  text-align: center;
+  line-height: 60px;
+  background-color: var(--back-color);
+}
+/* 表示時のフェードイン */
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+p.fadein {
+  animation: fadein 2s;
+}
+
+/* 点滅表示 */
+p.blink {
+  animation-name: fadein;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate-reverse;
+  animation-timing-function: ease-in-out;
+  animation-delay: 0.5s;
+}
+
+/* ホバーで点滅 */
+p.hoverb:hover {
+  background-color: var(--hober-color);
+  animation-name: fadein;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate-reverse;
+  animation-timing-function: ease-in-out;
+}
+/* クリックで停止 */
+p.hoverb label {
+  display: block;
+}
+
+input#stop:checked + p.hoverb {
+  animation-play-state: paused;
+}
+
+input#stop {
+  display: none;
+}
+
+/*--------------------
+CSS変数
+--------------------*/
+:root {
+  --back-color: #fd8080;
+  --hober-color: rgb(135, 222, 157);
+}

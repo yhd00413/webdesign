@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>下層ページの構成とは - WebDesign</title>
+  <link rel="icon" href="favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="favicon.png">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
+  <link rel="stylesheet" href="css/next.css">
+  <!-- reset.css・・・ブラウザの書式をリセットするために読み込む。tetleの下に書く -->
+  <!-- linkタグはcssフォルダを読み込むタグ
+  -->
+</head>
+<body id="top">
+  <div class="container">
+    <!-- divはグループを作るタグ、html上の意味はない。背景を付ける際など、まとめて書式を設定したいときに使う。 -->
+    <!-- classを使って、divに名前を付けることができる。上記ではcontainerが名前 -->
+    <header>
+      <!-- サイト名は大見出し「h1」を設定する -->
+      <!-- 「ctrl＋/」はコメントのショートカット。そのタグは表示されない -->
+      <h1><a href="index.html">WebDesign</a></h1>
+      <!-- メニューはリストli -->
+      <!-- ulとliは必ずセットで使う -->
+    </header>
+
+    <!-- </header>をh1だけにする→cssのnavがついているものをすべてheaderをはずす→ｃｓｓの「nav {」にposition: sticky;以下の行を追記 スクロールしても画面の上にメニューが表示されたままになる。-->
+    <nav>
+      <ul>
+        <!-- リンクタグ「a」を使うときは、alt＋ｗで行う -->
+        <li><a href="index.html">HOME</a></li>
+        <li> <a href="next.html" class="active">下層ページの構成</a></li>
+        <li> <a href="contact.html">お問い合わせ</a></li>
+      </ul>
+    </nav>
+    <!-- 「home」だけ太字に指定したいので、「active」というタグ名をつけてある。 -->
+
+
+    <!-- ［メインビジュアル］ -->
+    <!-- imgタグを記入する際は、<は入力しないでそのままiから入力する -->
+    <!-- ””の間にカーソルを合わせてctrl＋スペースを実行すると、プルダウンが表示されて画像ファイルを選ぶことができる。 -->
+
+
+    <!-- <ｐ>はたくさん出てくるので、やはり名前を付けておく。上記ではvisual という名前-->
+
+    <main>
+      <article>
+        <h1>下層ページの構成とは</h1>
+        <section>
+          <h2>下層ページの大見出し</h2>
+          <p>下層ページの大見出しは、mainの見出しとなる。headerのh1とmainのh1が存在することになる。</p>
+        </section>
+
+        <section class="flex">
+          <h2>FlexBoxレイアウトの基本</h2>
+          <div>
+            <p class="left">FlexBoxの左エリア<br>幅サイズは250px</p>
+            <div class="right">
+              <p><img src="img/float.png">FlexBoxの右側に配置するエリアで、幅サイズは650pxです。</p>
+              <p>画像の横にテキストを回り込ませ、複数行で表示させるために、img要素にfloatを設定します。</p>
+              <p>floatプロパティの値をleftにすると、画像が左に配置され、テキストが右に配置されます。rightにすると、画像が右に、テキストが左に配置されます。floatを解除したい要素には、clearプロパティでbothを設定します。</p>
+            </div>
+          </div>
+          <p class="homelink"><a href="https://developer.mozilla.org/ja/docs/Web/CSS/CSS_Grid_Layout/Basic_Concepts_of_Grid_Layout" target="_blank">グリッドレイアウト</a></p>
+        </section>
+
+        <section class="list">
+          <h2>下層ページに使われる要素</h2>
+          <ul>
+            <li>大見出し（h1）を含むメインコンテンツを囲むarticleタグ</li>
+            <li>大見出し（h1）以外の見出しとその内容をグループ化するsectionタグ</li>
+            <li>現在のページの階層を明示するパンくずリストは、番号付きリスト（olタグ）</li>
+            <li>バナーや注意書きなどの補足情報は、asideタグ</li>
+          </ul>
+        </section>
+        <section class="menu">
+          <h2>罫線を使用したメニュー</h2>
+          <ul>
+            <li><a href="#">HOME</a></li>
+            <li><a href="#">PRODUCT</a></li>
+            <li><a href="#">SERVICE</a></li>
+            <li><a href="#">SUPPORT</a></li>
+            <li><a href="#">COMPANY</a></li>
+            <li><a href="#">ACCESS</a></li>
+            <li><a href="#">CONTACT</a></li>
+          </ul>
+        </section>
+        <section>
+
+          <!-- hgroup要素 -->
+          <hgroup>
+            <h3>見出しグループ</h3>
+            <p>Heading Group</p>
+          </hgroup>
+          <p>見出しグループは見出しとサブタイトルｐでグループ化する</p>
+        </section>
+
+        <section>
+          <h2>アコーディオン</h2>
+          <details>
+            <summary>アコーディオンのラベル</summary>
+            <p>ラベルをクリックすると、summary以外のタグが表示される。</p>
+          </details>
+        </section>
+
+        <section>
+          <h2>表組み</h2>
+          <table>
+            <caption>表組の要素</caption>
+            <thead>
+              <tr>
+                <th scope="col">A列</th>
+                <th scope="col">B列</th>
+                <th scope="col">C列</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1-A</td>
+                <td>1-B</td>
+                <td>1-C</td>
+              </tr>
+              <tr>
+                <td>2-A</td>
+                <td>2-B</td>
+                <td>2-C</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <th colspan="2" scope="row">セルの数</th>
+                <!-- <td></td> 表を結合したので消した-->
+                <td>8</td>
+              </tr>
+            </tfoot>
+          </table>
+        </section>
+
+        <!-- エメット機能 ＞、+、＊、（）html入力が早くできるようになる。-->
+        <!-- <div class="container"></div> -->
+        <header>
+          <h1></h1>
+        </header>
+        <h1></h1>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p><a href="#"></a></p>
+        <p><a href="#"></a></p>
+        <header>
+          <h1></h1>
+          <nav>
+            <ul>
+              <li><a href=""><img src="#" alt=""></a></li>
+              <li><a href=""><img src="#" alt=""></a></li>
+              <li><a href=""><img src="#" alt=""></a></li>
+            </ul>
+          </nav>
+        </header>
+
+        <section class="transition">
+          <h2>transitionの基礎</h2>
+          <p class="simple"><a href="#">シンプルなtransition</a></p>
+          <p class="option">transitionのオプション</p>
+        </section>
+
+        <section class="tab">
+          <h2>transtionの応用</h2>
+          <ul>
+            <!-- TAB1の文字をクリックしても、ラジオボタンが反応するようにする。 -->
+            <li>
+              <label for="tab1">TAB1</label>
+              <input type="radio" name="tab" id="tab1" checked>
+              <div>
+                TAB1のコンテンツ
+              </div>
+            </li>
+            <li>
+              <label for="tab2">TAB2</label>
+              <input type="radio" name="tab" id="tab2">
+              <div>
+                TAB2のコンテンツ
+              </div>
+            </li>
+            <li>
+              <label for="tab3">TAB3</label>
+              <input type="radio" name="tab" id="tab3">
+              <div>
+                TAB3のコンテンツ
+              </div>
+            </li>
+          </ul>
+        </section>
+
+        <section class="keyframes">
+          <h2>@keyframes</h2>
+          <p class="fadein">表示時のフェードイン</p>
+          <p class="blink">点滅表示</p>
+          <input type="checkbox" id="stop">
+          <p class="hoverb"><label for="stop">ホバーで点滅、クリックで停止</label></p>
+        </section>
+
+      </article>
+      <p class="homelink"><a href="index.html"><span class="material-symbols-outlined">other_houses
+          </span>HOMEに戻る</a></p>
+    </main>
+  </div>
+
+  <!-- 今回は、ｈｔｍｌでアイコンの大きさを指定している。
+下記「width="32"」
+上の方「body」にid＝topを設定し、下記herfに#topを書くと、クリックでページトップに移るようになる。-->
+  <footer>
+    <p class="pagetop"><a href="#top"><img src="img/gotop.svg" width="32" alt="ページトップへ"></a></p>
+    <p class="copyright">
+      <small>
+        &copy;2021 WebDesign.
+        <span>All Rights Reserved.</span>
+      </small>
+    </p>
+  </footer>
+</body>
+</html>

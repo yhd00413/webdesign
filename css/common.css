@@ -1,0 +1,201 @@
+@import url("https://fonts.googleapis.com/css2?family=Kalam:wght@700&display=swap");
+/* googlefontsから書体をinportするために、１行目に記入する
+今回はheader h1のwebdesignの書体を変えている */
+
+/* 自動スクロール
+アイコンをクリックすると、瞬時に飛ぶのではなくスクロールしながら移るような視覚効果。全ページで効かせたいのでcommon.cssのtopに書く。ほとんどこの使い方しかしない。*/
+:root {
+  scroll-behavior: smooth;
+}
+
+/*［bodyの書式］文字色:濃いグレー、文字サイズ:16px、書体:游ゴシック体、背景色:ベージュ */
+body {
+  /* ボディにはテキストのデフォルトの書式を書く */
+  color: #333;
+  font-size: 16px;
+  font-family: "Yu Gothic Medium", YuGothic, sans-serif;
+  background-color: beige;
+}
+/* sans-serifはゴシック体、serifは明朝体 */
+/*［リンク文字の書式］文字色：親と同じ、下線なし → body書式の下へ移動、WebDesignにリンクを設定
+transition･･･ホバーした時に、瞬時に変わるのではなく、0.5秒かけて変化するように設定 */
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: 0.5s;
+}
+/* google icon */
+[class^="material-"] {
+  font-size: inherit;
+  vertical-align: -0.1em;
+}
+/*［class="container"の書式］背景色:白、最大幅:980px、中央配置、内側左右余白:20px
+ */
+.container {
+  background-color: #fff;
+  max-width: 980px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+/* 「.container」は「div container」意味。 */
+
+/*［WebDesignの書式］
+背景色:青、文字色:白、中央揃え、余白:30px
+→文字サイズ:30px、太字
+→外側下余白:20px
+書体を変更（
+font-style：italicは斜め、googlefontsで斜め書体を選んだときは書く。*/
+header h1 {
+  background-color: blue;
+  color: white;
+  text-align: center;
+  padding: 30px;
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  font-family: "Kalam", cursive;
+}
+/*［メニューの書式］上下ボーダー（線幅:2px、線種:直線、線カラー:任意）、外側下余白:20px、中央揃え、内側上下余白:15px */
+nav {
+  border-top-width: 2px;
+  border-top-style: solid;
+  border-top-color: #dc143c;
+  border-bottom: 2px solid #dc143c;
+  margin-bottom: 20px;
+  text-align: center;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  position: sticky;
+  top: 0;
+  background-color: rgba(255, 255, 255, 0.9);
+  z-index: 1;
+  /*［メニュー項目の書式］１行で表示、隣との間:20px */
+  & li {
+    display: inline;
+    padding-left: 10px;
+    padding-right: 10px;
+    /*［メニューのリンク文字のホバー設定］下線表示、不透明度:70% */
+    & li a:hover {
+      text-decoration: underline;
+      opacity: 0.7;
+    }
+    /* 不透明度は0～1で設定する。 */
+    /*［HOMEの書式］太字 */
+    & li a.active {
+      font-weight: bold;
+    }
+  }
+  /* display:inline・・・ボックスをインライン表示に変換する。liだと改行されてしまうため、横一列に表示されるようにした。 */
+  /* 片側だけにpadding20としてしまうと、中央揃えにならなくなる。（一番左のhomeの左にもスペースが20ｐｘできてしまうため。）各項目の両端に10ｐｘずつ付けてあげれば、中央揃えになる。 */
+  @media (max-width: 767px) {
+    position: unset;
+  }
+}
+/* text、paddingはliに書いても効かない。navに書く。
+} */
+
+/*［mainの書式］下余白:30px */
+main {
+  padding-bottom: 30px;
+}
+/*［大見出しの書式］文字色:黒、文字サイズ:20px、太字、背景画像:h1_bg.jpg、行の高さ:80px、背景画像サイズ:カバー、背景画像位置:中央、内側左余白:30px、外側下余白:30px
+この背景画像はｃｓｓで読み込む。
+background-image:url(../img/h1_bg.jpg) ←../を入れないとダメ
+line-heightを設定すると、上下中央に配置される。
+background-size:cover ←coverは画像で覆ってくれる、という意味。縦横比固定で表示される。
+どこかしら画像カットされる
+background-position: center ←画像の真ん中から選んでくれる。
+text-shadow･･･文字にシャドウを付ける。*/
+main article h1 {
+  color: #000;
+  font-size: 20px;
+  font-weight: bold;
+  background-image: url(../img/h1_bg.jpg);
+  line-height: 80px;
+  background-size: cover;
+  background-position: center;
+  padding-left: 30px;
+  margin-bottom: 30px;
+  text-shadow: 2px 2px 2px #fff;
+}
+
+/*［footerの書式］背景色:黒、文字色:白、中央揃え、高さ:50px */
+footer {
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  /* height: 50px; */
+  padding-top: 17px;
+  padding-bottom: 17px;
+}
+/* webではheightはほとんど使わない。（デバイスの環境で表示が変わってしまうため。） 上記の場合、height: 50px;は記載しない。上下余白だけ設定すればよい。*/
+
+/*［ページトップ］固定配置、右:12px、下:9px */
+footer p.pagetop {
+  position: fixed;
+  right: 12px;
+  bottom: 9px;
+}
+
+/* 不透明度:0.7 */
+footer p.pagetop a:hover {
+  opacity: 0.7;
+}
+
+/*［著作権］幅:980px、中央配置、右揃え
+copyrightの名前を付けて、書式設定をする。
+footerの中に上の白いboxと同じ幅のboxを作り、その中で右揃えを設定する。
+モバイルにした場合にアイコンがかぶってしまうのを防ぐ為、width85％を書く。
+ｐｃ表示の際に、最大幅が980pxとなるように、max-width: 980pxとする。 */
+footer p.copyright {
+  width: 85%;
+  max-width: 980px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: right;
+}
+
+/* レスポンシブ （モバイルの設定）
+※同じセレクタなら、下に書いてあるものが優先される。
+＠mediaを付けて、変更したいものの直後に書いてもよい。
+セレクタをまったく同じにしなければならないので、上からコピーをしてくる。
+767pxはスマホ横版
+モバイルで両幅の余白がいらない場合、marginのマイナス設定で対応する
+.containerで20のマージン設定がある→マイナス20のmargin＝０で余白がなくなる*/
+@media (max-width: 767px) {
+  header h1 {
+    margin-left: -20px;
+    margin-right: -20px;
+  }
+
+  /* モバイル環境では、メニューが画面と連動して動く（sticky）のをやめたい
+  上のnavの中にあるposition:stickyをunsetとしてやめる
+  上からタグをコピーして書き換えたほうが間違えがない*/
+  /* nav {
+    position: unset;
+  } */
+
+  /* モバイル環境の場合、フッターの文字が中央揃えになるようにする。
+  navと同じように、該当タグをコピーして不必要なところを削除、rightをcenterに変える */
+  footer p.copyright {
+    text-align: center;
+  }
+}
+
+/* 575pxはスマホ縦版 767pxの書式も効いている。
+inlineの解除→displayだけはunsetが使えない。blockを使う
+inlineを解除すると、文字の上下が近づきすぎるので、余白10pxを設定*/
+@media (max-width: 575px) {
+  nav li {
+    display: block;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  /* spanの表示をしない場合 */
+  footer p.copyright span {
+    display: none;
+  }
+}
