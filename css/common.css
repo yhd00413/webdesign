@@ -57,6 +57,69 @@ header h1 {
   margin-bottom: 20px;
   font-family: "Kalam", cursive;
 }
+/*-------------------------------
+ハンバーガーアイコン（モバイル用）
+どのwebでも同じようなことをするので、一度作ったものを使いまわししてOK
+-------------------------------*/
+/* 幅:50px, 高さ:50px, ボーダー:なし, 背景色:任意, FlexBox, 横:中央（fustify-content）, 縦:中央（align-items）, 配置:absolute（重ねて表示させる）, 上からの配置:20px（top）, 右からの配置:15px（right）
+３本線を縦方向にも中央に表示させるため、flexbox機能を使う。
+【common.css その2】
+.hmenuをFlexBox➡非表示に変更*/
+.hmenu {
+  width: 50px;
+  height: 50px;
+  border: none;
+  background-color: hwb(209 30% 0%);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 20px;
+  right: 15px;
+}
+
+/* 3本線を作る。幅:35px, 高さ:4px, 背景色:#fff, 角丸:4px, ブロック表示, 配置:absolute, 切り替え:0.5s */
+.hmenu span,
+.hmenu span::before,
+.hmenu span::after {
+  width: 35px;
+  height: 4px;
+  background-color: #fff;
+  border-radius: 4px;
+  display: block;
+  position: absolute;
+  transition: 0.5s;
+}
+
+/* 内容:"", 下:12px */
+.hmenu span::before {
+  content: "";
+  bottom: 12px;
+}
+
+/* 内容:"", 上:12px */
+.hmenu span::after {
+  content: "";
+  top: 12px;
+}
+
+/* 3本線から×印を作るため、１本消す。背景色:unset */
+.hmenu.close span {
+  background-color: unset;
+}
+
+/* ×印を作る。線を45度傾ける。下:0, 回転:-45°（単位はdeg） */
+.hmenu.close span::before {
+  bottom: 0px;
+  transform: rotate(-45deg);
+}
+
+/* 上:0, 回転:45° */
+.hmenu.close span::after {
+  top: 0px;
+  transform: rotate(45deg);
+}
+
 /*［メニューの書式］上下ボーダー（線幅:2px、線種:直線、線カラー:任意）、外側下余白:20px、中央揃え、内側上下余白:15px */
 nav {
   border-top-width: 2px;
@@ -137,6 +200,7 @@ footer p.pagetop {
   position: fixed;
   right: 12px;
   bottom: 9px;
+  display: none;
 }
 
 /* 不透明度:0.7 */
@@ -188,6 +252,40 @@ footer p.copyright {
 inlineの解除→displayだけはunsetが使えない。blockを使う
 inlineを解除すると、文字の上下が近づきすぎるので、余白10pxを設定*/
 @media (max-width: 575px) {
+  .hmenu {
+    display: flex;
+  }
+  /* A（上下）パターンの場合
+    nav {
+    display: flex;
+  } */
+
+  /*B（左右）パターンの場合
+幅:0, 高さ:100%-header高さpx, ボーダー:なし, ドロップシャドウ（box-shadow）:-3px 0 6px rgba(0, 0, 0, 0.2), 配置:absolute　スクロールしても表示させるためには、.hmenuも一緒にfixedに設定する。, 上:header高さpx, 右:0, 切り替え:0.5s, オーバーフローX:隠す（欄外に文字が残ってしまうのを防ぐ。必須の設定。）, 折り返さない（white-space: nowrap） */
+  nav {
+    width: 0;
+    height: calc(100% - 90px);
+    border: none;
+    box-shadow: -3px 0 6px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    top: 90px;
+    right: 0;
+    transition: 0.5s;
+    overflow-x: hidden;
+    white-space: nowrap;
+  }
+
+  /* 幅:200px */
+  .hmenu.close + nav {
+    width: 200px;
+  }
+
+  /* 左余白:20px, 左揃え */
+  nav li {
+    padding-left: 20px;
+    text-align: left;
+  }
+
   nav li {
     display: block;
     padding-top: 10px;
@@ -199,3 +297,9 @@ inlineを解除すると、文字の上下が近づきすぎるので、余白10
     display: none;
   }
 }
+/*A（上下）パターンの場合
+@media (min-width: 576px) {
+  nav {
+    display: block !important;
+  }
+} */
